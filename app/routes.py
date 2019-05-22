@@ -1,18 +1,11 @@
 from app import app 
-from flask import render_template, request
+from flask import render_template, request, send_file, make_response
 import numpy as np
 import cv2 
 import io
 import os
 from app.IMA import IMA
 import json
-
-cfg = json.load(open("configs/IMA_config.json"))
-ima = IMA(cfg)
-
-# json_results = ima.save_inference_json("/home/brentredmon/Documents/IMA/IMA_Web_App/app/uploaded_images/boat.jpg")
-# with open("anothertest.json", "w") as outfile:
-#     json.dump(json_results, outfile)
 
 basedir = os.path.dirname(os.path.abspath(__file__))
 
@@ -23,7 +16,8 @@ def index():
 @app.route('/inference_json', methods=['GET', 'POST'])
 def inference_json():
 
-    global ima
+    cfg = json.load(open("configs/IMA_config.json"))
+    ima = IMA(cfg)
 
     target = os.path.join(basedir, 'uploaded_images/')
     destination = ''
@@ -39,5 +33,9 @@ def inference_json():
     
     json_results = ima.save_inference_json(destination)
 
+    response = make_response(str(json_results))
+    response.headers.set('Content-Type', 'application/json')
+    response.headers.set( 'Content-Disposition', 'attachment', filename="inference.json")
+
     
-    return str(json_results)
+    return response
