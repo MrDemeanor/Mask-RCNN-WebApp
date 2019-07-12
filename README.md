@@ -1,5 +1,15 @@
 # We will run this with an NGINX instance
 
+Make a folder called _weights_ in the root of the project directory. Download the pretrained coco weights and place .h5 weights file in this folder.
+
+Download Link:
+```bash
+mkdir weights
+cd weights
+wget https://github.com/matterport/Mask_RCNN/releases/download/v2.0/mask_rcnn_coco.h5
+cd ..
+```
+
 ## Connect to server via ssh and forward your local machine's port 8000 to the server's port 8000
 
 ssh <username>@<server_ip> -L 8000:localhost:8000
