@@ -1,5 +1,9 @@
 # We will run this with an NGINX instance
 
+## Connect to server via ssh and forward your local machine's port 8000 to the server's port 8000
+
+ssh <username>@<server_ip> -L 8000:localhost:8000
+
 ## If you don't have NGINX on your server:
 ```bash
 sudo apt-get update
@@ -9,17 +13,16 @@ sudo apt-get install python-pip python-dev nginx
 ## How to run
 
 ```bash
+git clone https://git.txstate.edu/M12/IMA_MaskRCNN_Web_Service.git
+cd IMA_MaskRCNN_Web_Service
 virtualenv -p python3 venv
 source venv/bin/activate
 source requirements.txt
 uwsgi --socket 0.0.0.0:8000 --protocol=http -w main
 ```
 
-Then find out what the IP of your server is by typing in:
+On your local machine, navigate to 
+
 ```bash
-ifconfig
-```
-Go to that IP address at port 8000 in your web browser
-```bash 
-<your_ip_address>:8000
+localhost:8000
 ```
