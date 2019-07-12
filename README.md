@@ -21,7 +21,6 @@ source requirements.txt
 ```
 Make a folder called _weights_ in the root of the project directory. Download the pretrained coco weights and place .h5 weights file in this folder.
 
-Download Link:
 ```bash
 mkdir weights
 cd weights
