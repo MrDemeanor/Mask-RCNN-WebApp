@@ -24,12 +24,7 @@ You'll know the setup.sh script has finished when you encounter the following sc
 
 ![picture](images/finished.png)
 
-On your local machine, navigate to 
-
-```bash
-localhost:8000
-```
-You should be presented with a screen like this:
+On your local machine, navigate to *localhost:8000* in a web browser. You should be presented with a screen like this:
 
 ![picture](images/home_screen.png)
 
