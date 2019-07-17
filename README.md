@@ -20,7 +20,7 @@ The setup file will create a virtual environment, install dependencies, download
 ```bash
 uwsgi --socket 0.0.0.0:8000 --protocol=http -w main
 ```
-You'll know the script has finished when you encounter the following screen:
+You'll know the setup.sh script has finished when you encounter the following screen:
 
 ![picture](images/finished.png)
 
