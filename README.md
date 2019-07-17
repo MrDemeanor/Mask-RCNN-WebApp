@@ -22,6 +22,8 @@ uwsgi --socket 0.0.0.0:8000 --protocol=http -w main
 ```
 You'll know the script has finished when you encounter the following screen:
 
+![picture](images/finished.png)
+
 On your local machine, navigate to 
 
 ```bash
@@ -29,6 +31,13 @@ localhost:8000
 ```
 You should be presented with a screen like this:
 
+![picture](images/home_screen.png)
+
+
 Click on the button that says "Choose file" and select an image to send to the server:
 
+![picture](images/upload.png)
+
 Wait for the server to process the image. When finished, a JSON file containing all detections in the image will start downloading. 
+
+![picture](images/getjson.png)
