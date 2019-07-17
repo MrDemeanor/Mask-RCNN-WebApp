@@ -1,36 +1,34 @@
 # We will run this with an NGINX instance
 
-## Connect to server via ssh and forward your local machine's port 8000 to the server's port 8000
+## Connect to server via ssh and forward your local machine's port 8000 to the server's port 8000. Be sure to have saved the private key to ~/.ssh. 
 
-ssh <username>@<server_ip> -L 8000:localhost:8000
-
-## If you don't have NGINX on your server:
 ```bash
-sudo apt-get update
-sudo apt-get install python-pip python-dev nginx
+ssh -i ~/.ssh/uni_tx <user_name>@34.73.225.25 -L 8000:localhost:8000
 ```
+where "<user_name>" would be replaced by your actual username. 
 
 ## How to run
 
-```bash
-git clone https://git.txstate.edu/M12/IMA_MaskRCNN_Web_Service.git
-cd IMA_MaskRCNN_Web_Service
-virtualenv -p python3 venv
-source venv/bin/activate
-source requirements.txt
-```
-Make a folder called _weights_ in the root of the project directory. Download the pretrained coco weights and place .h5 weights file in this folder.
+CD into the directory of this project and running the following command: 
 
 ```bash
-mkdir weights
-cd weights
-wget https://github.com/matterport/Mask_RCNN/releases/download/v2.0/mask_rcnn_coco.h5
-cd ..
+source setup.sh
+```
+
+The setup file will create a virtual environment, install dependencies, download the weights file, and start the program. If you want to stop the server, press "Control + C" on your keyboard. Then, to restart the server:
+
+```bash
 uwsgi --socket 0.0.0.0:8000 --protocol=http -w main
 ```
+You'll know the script has finished when you encounter the following screen:
 
 On your local machine, navigate to 
 
 ```bash
 localhost:8000
 ```
+You should be presented with a screen like this:
+
+Click on the button that says "Choose file" and select an image to send to the server:
+
+Wait for the server to process the image. When finished, a JSON file containing all detections in the image will start downloading. 
