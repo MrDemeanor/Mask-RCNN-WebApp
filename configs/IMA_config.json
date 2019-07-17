@@ -15,8 +15,5 @@
     "save": 0, 
     "show_images": 1,
     "save_inference_json": 0,
-
-    "images": [
-        "boat.jpg"
-    ]
+    
 }
